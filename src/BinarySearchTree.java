@@ -79,7 +79,9 @@ public class BinarySearchTree {
     }
 
     private void inOrden(Node currNode, List<Integer> inOrden) {
-        
+        if (currNode != null) {
+            
+        }
     }
 
 }
