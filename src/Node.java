@@ -34,4 +34,9 @@ public class Node {
         return this.rightChild;
     }
 
+/*--------------------------------------------------------------- */
+    public static boolean tieneAlMenosUnHijo(Node currNode) {
+        return currNode.leftChild != null || currNode.rightChild != null;
+    }
+
 }
