@@ -37,6 +37,15 @@ public class App {
         System.out.println("Los elementos mayores al valor 12 son : " + treeOne.mostrarMayores(12));
         System.out.println("-------------------------------------------");
         System.out.println("Los valores que son padres son : " + treeOne.sonPadres());
+        System.out.println("-------------------------------------------");
+        System.out.println("Los valores 3 y 10 son hermanos? " + treeOne.sonHermanos(3, 10));
+        System.out.println("-------------------------------------------");
+        System.out.println("Los valores 30 y 10 son hermanos? " + treeOne.sonHermanos(30, 10));
+        System.out.println("-------------------------------------------");
+        System.out.println("Los valores 9 y 12 son hermanos? version 2 " + treeOne.sonHermanosV2(9, 12));
+        System.out.println("-------------------------------------------");
+        System.out.println("Los valores 37 y 32 son hermanos? version 2 " + treeOne.sonHermanosV2(37, 32));
+        
         //System.out.println("La cantidad de nodos que no tienen ambos hijos son : " + treeOne.cantidadIncompletos());
     }
 }

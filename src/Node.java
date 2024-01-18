@@ -39,4 +39,15 @@ public class Node {
         return currNode.leftChild != null || currNode.rightChild != null;
     }
 
+    public static boolean tieneAmbosHijos(Node currNode) {
+        return currNode.leftChild != null && currNode.rightChild != null;
+    }
+
+    public static boolean esPadreDeAmbos(Node currNode, int x, int y) {
+        return (currNode.getLeftChild().getValue() == x && 
+                currNode.getRightChild().getValue() == y) || 
+                (currNode.getLeftChild().getValue() == y && 
+                currNode.getRightChild().getValue() == x);
+    }
+
 }

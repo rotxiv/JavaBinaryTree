@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class BinarySearchTree {
     
@@ -236,6 +237,63 @@ public class BinarySearchTree {
                 sonPadres.add(currNode.getValue());
             }
             sonPadres(currNode.getRightChild(), sonPadres);
+        }
+    }
+
+/*  Funcion que retorna true o false si dos valores dados son hermanos */
+    public AtomicBoolean sonHermanos(int x, int y) {
+        AtomicBoolean flag = new AtomicBoolean(false);
+        sonHermanos(root, x, y, flag);
+        return flag;
+    }
+
+    private void sonHermanos(Node currNode, int x, int y, AtomicBoolean flag) {
+        if (currNode != null && Node.tieneAmbosHijos(currNode)) {
+            if ((currNode.getLeftChild().getValue() == x && 
+                currNode.getRightChild().getValue() == y) || 
+                (currNode.getLeftChild().getValue() == y && 
+                currNode.getRightChild().getValue() == x)) {
+                flag.set(true);
+            }
+            sonHermanos(currNode.getLeftChild(), x, y, flag);
+            sonHermanos(currNode.getRightChild(), x, y, flag);
+        }
+    }
+    public boolean sonHermanosV2(int x, int y) {
+        return sonHermanosV2(root, x, y);
+    }
+
+    private boolean sonHermanosV2(Node currNode, int x, int y) {
+        if (currNode == null) {
+            return false;
+        }
+        else {
+            if (Node.tieneAmbosHijos(currNode) && Node.esPadreDeAmbos(currNode, x, y)) {
+                return true;
+            }
+            boolean leftFlag = sonHermanosV2(currNode.getLeftChild(), x, y);
+            boolean rightflag = sonHermanosV2(currNode.getRightChild(), x, y);
+            return (leftFlag || rightflag) ? true : false;
+        }
+    }
+
+/*  funcion que retorna el valor del nodo padre de un valor dado */
+    public int devolverPadre(int value) {
+        return devolverPadre(root, value, null);
+    }
+
+    public int devolverPadre(Node currNode, int value, Node fatherNode) {
+        if (currNode == null) {
+            return ;
+        }
+        else {
+            if (value == currNode.getValue()) {
+                return fatherNode.getValue();
+            }
+            else {
+                int leftF = devolverPadre(currNode.getLeftChild(), value, currNode);
+                int rightF = devolverPadre(currNode.getRightChild(), value, currNode);
+            }
         }
     }
 
